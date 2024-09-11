@@ -2,6 +2,7 @@ import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { TaskComponent } from '../tasks/task/task.component';
 import { DUMMY_TASKS } from '../dummy-tasks';
 import { NewTaskDialogComponent } from "../tasks/new-task-dialog/new-task-dialog.component";
+import { NewTaskData } from '../tasks/task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -27,8 +28,21 @@ export class AppTasksComponent {
     this.tasks=this.tasks.filter((task) => task.id !== id)
   }
 
-  onAddTask() {
+  onStartAddTask() {
     this.hasStartedNewTask = true;
+  }
+
+  onAddTask(taskData: NewTaskData) {
+    this.tasks.push(
+      {
+        id: new Date().getTime().toString(),
+        userId: this.userId,
+        title: taskData.title,
+        summary: taskData.summary,
+        dueDate: taskData.dueDate
+      }
+    );
+    this.hasStartedNewTask = false;
   }
 
   onCancelAddingTask() {
