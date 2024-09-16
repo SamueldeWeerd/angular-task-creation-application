@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from "./user/user.component";
 import { DUMMY_USERS } from './dummy-users';
-import { AppTasksComponent } from './app-tasks/app-tasks.component';
+import { AppTasksComponent } from './tasks/app-tasks/app-tasks.component';
 
 @Component({
   selector: 'app-root',
